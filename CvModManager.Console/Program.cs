@@ -9,6 +9,14 @@ namespace CvModManager.Console
     {
         static void Main(string[] args)
         {
+            if (!ModHelper.HasModPath())
+            {
+                ForegroundColor = ConsoleColor.Yellow;
+                WriteLine("Mod folder could not be found and will be created");
+                ResetColor();
+                Pause();
+                Directory.CreateDirectory(ModHelper.GetModPath());
+            }
             while (MainMenu())
             {
                 Clear();
